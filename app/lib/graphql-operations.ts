@@ -24,3 +24,20 @@ export const CREATE_USER_MUTATION = gql`
     }
   }
 `;
+
+
+export const FETCH_USER_CLASSES = gql`
+query FETCH_USER_CLASSES($id: uuid!) {
+  users(where: {id: {_eq: $id}}) {
+    classes {
+      id
+      name
+      subject
+      user{
+        name
+      }
+    }
+  }
+}
+
+`

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AppbarClient } from "./components/AppbarClient";
+import { Providers } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className=" h-screen">
+      <Providers>
+        <body className={inter.className}>
+          <div>
+            <div className="fixed top-0 w-screen"><AppbarClient /></div>
+            <div className="">
+              {children}
+            </div>
+          </div>
+        </body>
+      </Providers>
     </html>
   );
 }

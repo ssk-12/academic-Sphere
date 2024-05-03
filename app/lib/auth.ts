@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 const verifyPassword = async (userPassword: string, inputPassword: string): Promise<boolean> => {
   console.log("check user pass")
-  console.log(inputPassword, userPassword)
+  // console.log(inputPassword, userPassword)
   return bcrypt.compare(inputPassword, userPassword);
 };
 
@@ -58,6 +58,8 @@ export const authOptions: NextAuthOptions = {
           return await createUser(credentials.email, credentials.password, credentials.name);
         } else {
           if (await verifyPassword(user.password || '', credentials.password)) {
+            console.log(user.id,user.name,user.email);
+            
             return { id: user.id, name: user.name, email: user.email };
           }
           return null;
