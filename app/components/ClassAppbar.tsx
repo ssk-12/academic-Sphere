@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Stream from './Stream';
+import People from './People';
 
 function ClassAppbar({class_Details, class_enrollments}:any) {
     const [selected, setSelected] = useState("Stream");
@@ -21,7 +22,10 @@ function ClassAppbar({class_Details, class_enrollments}:any) {
                 <div onClick={() => setSelected("People")} style={getTabStyle("People")}>People</div>
                 <div onClick={() => setSelected("Attendance")} style={getTabStyle("Attendance")}>Attendance</div>
             </div>
-            <Stream classDetails={class_Details} />
+            {(selected === "Stream") && <Stream classDetails={class_Details} />}
+            {(selected === "People") && <People class_enrollments={class_enrollments} />}
+
+            
 
         </>
     );
