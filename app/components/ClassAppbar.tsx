@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Stream from './Stream';
 
-function ClassAppbar({eachClass}:any) {
+function ClassAppbar({class_Details, class_enrollments}:any) {
     const [selected, setSelected] = useState("Stream");
 
     const getTabStyle = (tabName: string) => {
@@ -21,7 +21,7 @@ function ClassAppbar({eachClass}:any) {
                 <div onClick={() => setSelected("People")} style={getTabStyle("People")}>People</div>
                 <div onClick={() => setSelected("Attendance")} style={getTabStyle("Attendance")}>Attendance</div>
             </div>
-            <Stream classDetails={eachClass} />
+            <Stream classDetails={class_Details} />
 
         </>
     );

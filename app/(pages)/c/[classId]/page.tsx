@@ -4,11 +4,12 @@ import { fetchClassDetails } from '@/app/lib/actions/fetchClassDetails'
 import React from 'react'
 
 async function page({ params }: any) {
-  const eachClass = await fetchClassDetails(params.classId)
+  const {class_Details,class_enrollments} = await fetchClassDetails(params.classId)
+  
   return (
     <div>
       <div className="fixed top-[60px] w-screen">
-        <ClassAppbar eachClass={eachClass} />
+        <ClassAppbar class_enrollments={class_enrollments} class_Details={class_Details}  />
       </div>
     </div>
   )

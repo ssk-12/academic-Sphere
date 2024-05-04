@@ -33,6 +33,7 @@ query FETCH_USER_CLASSES($id: uuid!) {
       id
       name
       subject
+      host_id
       user{
         name
       }
@@ -44,11 +45,14 @@ query FETCH_USER_CLASSES($id: uuid!) {
 
 
 export const FETCH_CLASS = gql`
-query FETCH_CLASS($class_id: uuid!) {
+query FETCH_CLASS($class_id: uuid!) @cached {
   class_enrollments(where: {class_id: {_eq: $class_id}}) {
     id
     class {
       host_id
+      user {
+        name
+      }
       id
       name
       subject
@@ -57,6 +61,16 @@ query FETCH_CLASS($class_id: uuid!) {
       name
     }
   }
+  classes(where: {id: {_eq: $class_id}}) {
+    name
+    subject
+    id
+    host_id
+    user{
+      name
+    }
+  }
 }
+
 
 `

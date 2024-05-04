@@ -20,10 +20,9 @@ export async function fetchClassDetails(class_id:string) {
         fetchPolicy: "network-only"
     });
 
-    const classDeatails = res.data.class_enrollments;
-    console.log(res);
-    console.log(classDeatails);
+    const class_Details = res.data.classes[0];
+    const class_enrollments = res.data.class_enrollments
     
 
-    return classDeatails;
+    return {class_Details,class_enrollments};
 }

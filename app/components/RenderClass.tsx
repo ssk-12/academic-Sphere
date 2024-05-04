@@ -6,17 +6,17 @@ async function RenderClass({classId}:{classId : string}) {
     console.log(classId);
     
 
-    const classDetails = await fetchClassDetails(classId)
+    const {class_enrollments} = await fetchClassDetails(classId)
   return (
     <div>
-      {classDetails.map((cd :any)=>(
+      {class_enrollments.map((cd :any)=>(
         <div key={cd.id}>
           <div>
             
             {cd.id}
             {cd.class.name}
             {cd.class.subject}
-            {cd.user.name}
+            {cd.user.host}
           </div>
         </div>
       ))}
