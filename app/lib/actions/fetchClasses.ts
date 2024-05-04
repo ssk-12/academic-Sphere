@@ -21,7 +21,7 @@ export async function fetchClass() {
     });
 
     const classes = res.data.users[0].classes;
-    console.log(classes);
+    // console.log(classes);
 
     return classes;
 }

@@ -41,3 +41,22 @@ query FETCH_USER_CLASSES($id: uuid!) {
 }
 
 `
+
+
+export const FETCH_CLASS = gql`
+query FETCH_CLASS($class_id: uuid!) {
+  class_enrollments(where: {class_id: {_eq: $class_id}}) {
+    id
+    class {
+      host_id
+      id
+      name
+      subject
+    }
+    user {
+      name
+    }
+  }
+}
+
+`
