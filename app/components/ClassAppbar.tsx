@@ -24,6 +24,7 @@ function ClassAppbar({class_Details, class_enrollments}:any) {
             </div>
             {(selected === "Stream") && <Stream classDetails={class_Details} />}
             {(selected === "People") && <People class_enrollments={class_enrollments} />}
+            {(selected === "Attendance") && <People class_enrollments={class_enrollments} />}
 
             
 

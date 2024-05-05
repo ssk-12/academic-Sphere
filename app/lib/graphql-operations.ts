@@ -59,6 +59,7 @@ query FETCH_CLASS($class_id: uuid!) @cached {
     }
     user {
       name
+      id
     }
   }
   classes(where: {id: {_eq: $class_id}}) {

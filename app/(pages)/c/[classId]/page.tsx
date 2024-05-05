@@ -7,7 +7,7 @@ async function page({ params }: any) {
   const {class_Details,class_enrollments} = await fetchClassDetails(params.classId)
 
   // console.log(class_Details);
-  console.log(class_enrollments);
+  // console.log(class_enrollments);
   
   
   return (
