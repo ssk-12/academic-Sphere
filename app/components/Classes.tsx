@@ -17,7 +17,7 @@ export function RenderClasses({classes}:{classes:[classItem]}) {
   return (
     <div className="flex justify-start items-center gap-6 flex-wrap p-20 pt-24">
                 {classes.map((classItem: classItem) => (
-                    <div key={classItem.id} onClick={()=>{router.push("/c/" + classItem.id)}} className=" shadow-lg cursor-pointer flex flex-col min-w-64 max-w-64">
+                    <div key={classItem.id} onClick={()=>{router.push("/c/" + classItem.id + "/stream")}} className=" shadow-lg cursor-pointer flex flex-col min-w-64 max-w-64">
                         <div className='flex flex-col p-4 rounded-t-lg bg-gray-400'>
                             <h2 className="font-bold text-2xl">{classItem.name}</h2>
                             <p className='text-sm'>{classItem.subject}</p>

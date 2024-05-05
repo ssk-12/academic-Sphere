@@ -1,8 +1,10 @@
 import React from 'react'
 
 function Stream({ classDetails }: any) {
-    return (
-        <div className='p-10'>
+    console.log(classDetails);
+    
+    return (    
+        <div className=' p-32'>
             <div className='w-full bg-[#d6dff1] h-52 rounded-2xl flex flex-col'>
                 <div className='p-3 flex items-end h-full gap-4'>
                     <div className='flex justify-between items-center w-full'>

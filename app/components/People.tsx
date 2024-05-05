@@ -1,7 +1,7 @@
 import React from 'react'
 
 function People({ class_enrollments }: any) {
-    console.log(class_enrollments[0].id);
+    // console.log(class_enrollments[0].id);
 
     return (
         <div>
