@@ -6,15 +6,22 @@ import { RenderClasses } from '@/app/components/Classes';
 
 async function Classes() {
 
-    const classes = await fetchClass();
+    const {classes,class_enrollments} = await fetchClass();
+    // console.log(classes)
+     const newclasses = [...classes, ...class_enrollments];
 
-    return (<div>
-        {classes.length > 0 ? (
-            <RenderClasses classes={classes}></RenderClasses>
+
+
+
+    return (
+        <div>
+        {newclasses.length > 0 ? (
+            <RenderClasses classes={newclasses}></RenderClasses>
         ) : (
             <p className="font-semibold flex items-center justify-center min-h-[calc(100vh-46px)]">No Classes</p>
         )}
-    </div>)
+    </div>
+    )
 }
 
 export default function BlogsPage() {

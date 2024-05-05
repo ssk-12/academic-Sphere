@@ -5,7 +5,8 @@ function People({ class_enrollments }: any) {
 
     return (
         <div>
-            {class_enrollments.map((e: any) => (
+            {class_enrollments.length > 0 ?
+            class_enrollments.map((e: any) => (
                 <div key={e.id} className='p-4 h-full flex flex-col justify-start items-start'>
 
                     <div className="flex items-center gap-4">
@@ -19,7 +20,8 @@ function People({ class_enrollments }: any) {
                     </div>
 
                 </div>
-            ))}
+            )) : <div>No one enrolled yet. share class code</div>
+            }
         </div>
 
     )

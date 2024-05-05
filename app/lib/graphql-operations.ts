@@ -25,19 +25,53 @@ export const CREATE_USER_MUTATION = gql`
   }
 `;
 
+export const CREATE_CLASS_MUTATION = gql`
+mutation insert_class($host_id:uuid, $name:String,$subject:String) {
+  insert_classes_one(object: {host_id: $host_id, name: $name, subject: $subject}) {
+    id
+  }
+}
+`
+
+
+// export const FETCH_USER_CLASSES = gql`
+// query FETCH_USER_CLASSES($id: uuid!) {
+//   users(where: {id: {_eq: $id}}) {
+//     classes {
+//       id
+//       name
+//       subject
+//       host_id
+//       user{
+//         name
+//       }
+//     }
+//   }
+// }
+
+// `
 
 export const FETCH_USER_CLASSES = gql`
 query FETCH_USER_CLASSES($id: uuid!) {
-  users(where: {id: {_eq: $id}}) {
-    classes {
+  class_enrollments(where: {user_id: {_eq: $id}}) {
+    class {
       id
+      host_id
       name
       subject
-      host_id
       user{
         name
       }
     }
+  }
+  classes(where: { host_id: {_eq:$id }}) {
+    id
+      host_id
+      name
+      subject
+      user {
+        name
+      }
   }
 }
 
@@ -74,4 +108,12 @@ query FETCH_CLASS($class_id: uuid!) @cached {
 }
 
 
+`
+
+export const ENROLL_INTO_CLASS = gql`
+mutation enroll($class_id: uuid, $user_id:uuid) {
+  insert_class_enrollments_one(object: {class_id: $class_id, user_id: $user_id}) {
+    id
+  }
+}
 `

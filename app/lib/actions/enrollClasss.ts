@@ -1,13 +1,12 @@
 "use server"
 import { serverClient } from "@/app/lib/apollo-server";
-import { FETCH_USER_CLASSES } from "@/app/lib/graphql-operations";
+import { ENROLL_INTO_CLASS } from "@/app/lib/graphql-operations";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/lib/auth";
-import { log } from "console";
 
 
 
-export async function fetchClass() {
+export async function enrollClass({class_id}:any) {
     const session = await getServerSession(authOptions);
     if (!session?.user || !session.user?.id) {
         return {
@@ -16,16 +15,15 @@ export async function fetchClass() {
     }
 
     const res = await serverClient.mutate({
-        mutation: FETCH_USER_CLASSES,
-        variables: { id: session?.user.id },
+        mutation: ENROLL_INTO_CLASS,
+        variables: { user_id: session?.user.id, class_id },
         fetchPolicy: "network-only"
     });
 
-    const {class_enrollments,classes} = res.data || [];
-    console.log(class_enrollments);
-    console.log(classes);
+    const cls = res.data?.insert_class_enrollments_one.id || "";
+    console.log(res);
+    console.log(cls);
     
-    return {class_enrollments,classes}  ;
+
+    return cls;
 }
-
-
