@@ -117,3 +117,18 @@ mutation enroll($class_id: uuid, $user_id:uuid) {
   }
 }
 `
+
+export const CREATE_EVENT = gql`
+mutation CreateEvent($class_id: uuid!, $host_id: uuid!, $location: String!, $name: String!, $proximity: float8!, $timestamp: timestamptz!) {
+  insert_events_one(object: {
+    class_id: $class_id,
+    host_id: $host_id,
+    location: $location,
+    name: $name,
+    proximity: $proximity,
+    timestamp: $timestamp
+  }) {
+    id
+  }
+}
+`;

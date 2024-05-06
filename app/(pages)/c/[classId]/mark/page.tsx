@@ -2,6 +2,7 @@ import React from 'react'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/lib/auth'
 import { fetchClassDetails } from '@/app/lib/actions/fetchClassDetails';
+import CreateEvent from '@/app/components/CreateEvent';
 
 
 async function page({params} : {params:{classId :string}}) {
@@ -11,6 +12,9 @@ async function page({params} : {params:{classId :string}}) {
     return (
       <div className='flex flex-col justify-center items-center p-20'>
         Host
+        <div>
+          <CreateEvent classId={params.classId}/>
+        </div>
       </div>
     )    
   }
