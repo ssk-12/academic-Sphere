@@ -133,6 +133,15 @@ mutation CreateEvent($class_id: uuid!, $host_id: uuid!, $location: String!, $nam
 }
 `;
 
+export const MARK_ATTENDANCE = gql`
+mutation mark_attendance($class_id: uuid! , $user_id: uuid!, $event_id: uuid) {
+  insert_attendances_one(object: {class_id:$class_id , user_id: $user_id , event_id:$event_id, status: "PRESENT"}) {
+    id
+  }
+}
+
+`
+
 export const FETCH_EVENT = gql`
 query Fetch_ev($class_id: uuid!) {
   events(where: {class_id: {_eq: $class_id}}) {

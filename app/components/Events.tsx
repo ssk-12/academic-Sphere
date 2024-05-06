@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react"
-import { fetchEvent } from "../lib/actions/fetchEvent"
+import { markAttendance } from '../lib/actions/markAttendance';
 
 interface Event {
     id: number;
@@ -13,12 +13,13 @@ interface Event {
     longitude: number;
 }
 
+interface EventsProps {
+    class_id: string;
+    events: Event[];
+}
 
-
-export function Events({ events }: { class_id: string, events: any }) {
-
-
-    const handleAttend = async (event: Event) => {
+export function Events({ class_id, events }: EventsProps) {
+    const handleAttend = async (event: Event, class_id: string) => {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const userLat = position.coords.latitude;
             const userLong = position.coords.longitude;
@@ -26,12 +27,16 @@ export function Events({ events }: { class_id: string, events: any }) {
             const [eventLat, eventLong] = event.location.split(',').map(Number);
             const distance = calculateDistance(userLat, userLong, eventLat, eventLong);
 
-            console.log("distance", distance, "proxi", event.proximity)
+            console.log("distance", distance, "proxi", event.proximity);
 
             if (distance <= event.proximity) {
                 try {
-
-                    alert('Attendance marked as present!');
+                    const event_id = event.id;
+                    console.log("event_id",event_id)
+                    const res = await markAttendance({ class_id, event_id });
+                    if (res.id) {
+                        alert('Attendance marked as present!');
+                    }
                 } catch (error) {
                     console.error('Error marking attendance:', error);
                     alert('Failed to mark attendance');
@@ -54,28 +59,25 @@ export function Events({ events }: { class_id: string, events: any }) {
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const distance = R * c; // Distance in meters
-        console.log("distance ", distance)
         return distance;
-
     }
 
     return (
-        <div className="mt-3 flex flex-col justify-center items-center gap-3 w-full">Events
-
-            {events.map((event: any) => (
+        <div className="mt-3 flex flex-col justify-center items-center gap-3 w-full">
+            Events
+            {events.map((event) => (
                 <div key={event.id} className="event-item bg-gray-100 p-4 rounded-lg flex justify-between items-center min-w-96">
                     <span className="text-gray-700">{event.name} - {new Date(event.timestamp).toLocaleString('en-US', { timeZone: 'UTC' })}</span>
-
                     <button
                         className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                        onClick={() => handleAttend(event)}
+                        onClick={() => handleAttend(event, class_id)}
                     >
                         Attend
                     </button>
                 </div>
             ))}
         </div>
-    )
+    );
 }
 
-export default Events
+export default Events;
