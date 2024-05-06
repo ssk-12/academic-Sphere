@@ -132,3 +132,20 @@ mutation CreateEvent($class_id: uuid!, $host_id: uuid!, $location: String!, $nam
   }
 }
 `;
+
+export const FETCH_EVENT = gql`
+query Fetch_ev($class_id: uuid!) {
+  events(where: {class_id: {_eq: $class_id}}) {
+    id
+    name,
+    host_id,
+    timestamp
+    user{
+      name
+    }
+    proximity
+    location
+  }
+}
+
+`
