@@ -13,11 +13,10 @@ interface Event {
     longitude: number;
 }
 
-export async function Events({ class_id }: { class_id: string }) {
-    
 
-    const {events} = await fetchEvent({ class_id });
-    // console.log(res);
+
+export function Events({ events }: { class_id: string, events: any }) {
+
 
     const handleAttend = async (event: Event) => {
         navigator.geolocation.getCurrentPosition(async (position) => {
@@ -27,17 +26,11 @@ export async function Events({ class_id }: { class_id: string }) {
             const [eventLat, eventLong] = event.location.split(',').map(Number);
             const distance = calculateDistance(userLat, userLong, eventLat, eventLong);
 
+            console.log("distance", distance, "proxi", event.proximity)
+
             if (distance <= event.proximity) {
                 try {
-                    await axios.post('http://127.0.0.1:8787/api/v1/allevents/attend', {
-                        eventId: event.id,
-                        userEmail: userem,
-                        status: 'PRESENT',
-                    }, {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem("token")}`,
-                        },
-                    });
+
                     alert('Attendance marked as present!');
                 } catch (error) {
                     console.error('Error marking attendance:', error);
@@ -66,26 +59,21 @@ export async function Events({ class_id }: { class_id: string }) {
 
     }
 
-
-
-
     return (
         <div className="mt-3 flex flex-col justify-center items-center gap-3 w-full">Events
 
-            {events.map((event:any) => (
+            {events.map((event: any) => (
                 <div key={event.id} className="event-item bg-gray-100 p-4 rounded-lg flex justify-between items-center min-w-96">
-                    <span className="text-gray-700">{event.name} - {new Date(event.timestamp).toLocaleString()}</span>
+                    <span className="text-gray-700">{event.name} - {new Date(event.timestamp).toLocaleString('en-US', { timeZone: 'UTC' })}</span>
+
                     <button
                         className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                        onClick={()=> handleAttend(event)}
+                        onClick={() => handleAttend(event)}
                     >
                         Attend
                     </button>
                 </div>
             ))}
-
-
-
         </div>
     )
 }
