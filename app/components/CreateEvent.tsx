@@ -3,7 +3,7 @@ import { create } from 'domain';
 import React, { useState } from 'react';
 import { createEvent } from '../lib/actions/createEvent';
 
-const CreateEvent = ({classId}:{classId:string}) => {
+const CreateEvent = ({ classId }: { classId: string }) => {
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
@@ -38,7 +38,7 @@ const CreateEvent = ({classId}:{classId:string}) => {
         }
 
         const event = {
-            class_id:classId,
+            class_id: classId,
             name,
             location,
             proximity: parseFloat(proximity),
@@ -51,32 +51,30 @@ const CreateEvent = ({classId}:{classId:string}) => {
     };
 
     return (
-        <div className="create-event-container p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg">
+        <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg py-4 px-6">
             <h2 className="text-2xl font-bold text-center mb-6">Create Event</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-2">
                 <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Event Name"
                     required
                 />
-                <div>
-                    <button
-                        type="button"
-                        onClick={handleLocation}
-                        className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        Use My Location
-                    </button>
-                    <p className="mt-2 text-sm text-gray-500">Location: {location || 'Not set'}</p>
-                </div>
+                <button
+                    type="button"
+                    onClick={handleLocation}
+                    className="w-full px-4 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    Use My Location
+                </button>
+                <p className="text-sm text-gray-500">Location: {location || 'Not set'}</p>
                 <input
                     type="text"
                     value={proximity}
                     onChange={(e) => setProximity(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Proximity (in meters)"
                     required
                 />
@@ -84,17 +82,20 @@ const CreateEvent = ({classId}:{classId:string}) => {
                     type="datetime-local"
                     value={timestamp}
                     onChange={(e) => setTimestamp(e.target.value)}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                 />
                 <button
                     type="submit"
-                    className="w-full px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-3 text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                     Create Event
                 </button>
             </form>
+            
+            
         </div>
+
     );
 };
 

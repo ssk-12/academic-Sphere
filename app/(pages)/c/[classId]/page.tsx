@@ -1,5 +1,4 @@
-import ClassAppbar from '@/app/components/ClassAppbar'
-import RenderClass from '@/app/components/RenderClass'
+
 import { SidebarItem } from '@/app/components/SidebarItem'
 import { fetchClassDetails } from '@/app/lib/actions/fetchClassDetails'
 import React from 'react'

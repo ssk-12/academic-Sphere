@@ -22,7 +22,7 @@ interface classItem {
 export function RenderClasses({ classes }: { classes: classItem[] }) {
     const router = useRouter();
     return (
-        <div className="flex justify-start items-center gap-6 flex-wrap p-20 pt-24">
+        <div className="flex justify-start items-center gap-6 flex-wrap px-16 py-8">
             {classes.map((classItem: classItem) => {
                 // Determine the best values to use
                 const effectiveId = classItem.class?.id || classItem.id;

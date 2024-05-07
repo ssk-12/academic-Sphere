@@ -63,7 +63,7 @@ export function Events({ class_id, events }: EventsProps) {
     }
 
     return (
-        <div className="mt-3 flex flex-col justify-center items-center gap-3 w-full">
+        <div className=" h-full flex flex-col justify-center items-center gap-3 w-full">
             Events
             {events.map((event) => (
                 <div key={event.id} className="event-item bg-gray-100 p-4 rounded-lg flex justify-between items-center min-w-96">

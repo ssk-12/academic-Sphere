@@ -11,10 +11,9 @@ async function page({params} : {params:{classId :string}}) {
   const session = await getServerSession(authOptions);
   const {class_enrollments,class_Details} = await fetchClassDetails(params.classId)
   const {events} = await fetchEvent({ class_id:params.classId });
-  if(session?.user.id === class_Details?.host_id || ""){
+  if(session?.user.id === class_Details?.host_id){
     return (
-      <div className='flex flex-col justify-center items-center p-20'>
-        Host
+      <div className='flex flex-col justify-center items-center '>
         <div>
           <CreateEvent classId={params.classId}/>
         </div>
@@ -23,8 +22,7 @@ async function page({params} : {params:{classId :string}}) {
   }
 
   else{
-    return <div className='flex flex-col justify-center items-center p-20'>
-      attendee
+    return <div className='flex flex-col justify-center items-center '>
       <Events class_id = {params.classId} events={events} />
     </div>
   }

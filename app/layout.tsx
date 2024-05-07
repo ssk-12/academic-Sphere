@@ -17,15 +17,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className=" h-screen">
+    <html lang="en" >
       <Providers>
         <body className={inter.className}>
-          <div>
-            <div className="fixed top-0 w-screen"><AppbarClient /></div>
-            <div className="">
+          <div className="h-screen flex flex-col">
+            <div className="bg-blue-200" style={{ height: '10%' }}>
+              <AppbarClient/>
+            </div>
+            <div className="flex-grow overflow-y-auto">
               {children}
             </div>
           </div>
+
         </body>
       </Providers>
     </html>

@@ -2,7 +2,7 @@ import DefButton from "./components/DefButton";
 
 export default function Home() {
   return (
-    <div className="bg-[#030712] h-screen">
+    <div className="bg-[#030712]  flex flex-col justify-center items-center h-full">
       <div className="flex flex-col justify-center items-center h-full">
         <div className=" text-white">LOC-BASED ATTENDANCE </div>
         <div className="m-4">

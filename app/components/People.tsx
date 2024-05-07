@@ -7,7 +7,7 @@ function People({ class_enrollments }: any) {
         <div>
             {class_enrollments.length > 0 ?
             class_enrollments.map((e: any) => (
-                <div key={e.id} className='p-4 h-full flex flex-col justify-start items-start'>
+                <div key={e.id} className='p-2 h-full flex flex-col justify-start items-start'>
 
                     <div className="flex items-center gap-4">
                         <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
