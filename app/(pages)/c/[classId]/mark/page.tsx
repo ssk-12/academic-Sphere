@@ -5,6 +5,7 @@ import { fetchClassDetails } from '@/app/lib/actions/fetchClassDetails';
 import CreateEvent from '@/app/components/CreateEvent';
 import Events from '@/app/components/Events';
 import { fetchEvent } from '@/app/lib/actions/fetchEvent';
+import Host from '@/app/components/Host';
 
 
 async function page({params} : {params:{classId :string}}) {
@@ -13,17 +14,15 @@ async function page({params} : {params:{classId :string}}) {
   const {events} = await fetchEvent({ class_id:params.classId });
   if(session?.user.id === class_Details?.host_id){
     return (
-      <div className='flex flex-col justify-center items-center '>
-        <div>
-          <CreateEvent classId={params.classId}/>
-        </div>
+      <div className='flex h-full w-full'>
+        <Host class_id={params.classId}  events={events}/>
       </div>
     )    
   }
 
   else{
     return <div className='flex flex-col justify-center items-center '>
-      <Events class_id = {params.classId} events={events} />
+      <Events class_id = {params.classId} events={events} user={true} />
     </div>
   }
   

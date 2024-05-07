@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { Button } from './Button';
 
-export default function DefButton({href}:{href : string}) {
+export default function DefButton({href,text}:{href : string, text:string}) {
   const router = useRouter();
   
 
@@ -10,7 +10,7 @@ export default function DefButton({href}:{href : string}) {
     <Button onClick={() => {
       router.push(href);
   }}>
-      Explore now ↗️
+      {text}
     </Button>
   );
 }

@@ -5,7 +5,7 @@ function Stream({ classDetails }: any) {
     
     return (    
         <div className=' h-full'>
-            <div className='w-full bg-[#d6dff1] h-52 rounded-2xl flex flex-col'>
+            <div className='w-full  flex-wrap bg-[#d6dff1] h-52 rounded-2xl flex flex-col'>
                 <div className='p-3 flex items-end h-full gap-4'>
                     <div className='flex justify-between items-center w-full'>
                         <h3 className=' text-3xl'>{classDetails.name}</h3>

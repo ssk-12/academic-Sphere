@@ -10,8 +10,8 @@ const UsernameLayout = ({ children, params }: LayoutProps) => {
   return (
 
     <div className="h-full flex flex-col">
-      <div className="flex items-center justify-center m-2" style={{ height: '8%' }}>
-        <div className="fixed  w-[600px] rounded-2xl  flex justify-center items-center gap-3 bg-gray-800">
+      <div className="flex items-center justify-center md:m-2" style={{ height: '8%' }}>
+        <div className="fixed md:w-[600px] rounded-2xl  flex justify-center items-center gap-[1px] md:gap-3 bg-gray-800">
 
           <SidebarItem
             baseHref="/c/"
@@ -36,7 +36,7 @@ const UsernameLayout = ({ children, params }: LayoutProps) => {
           />
         </div>
       </div>
-      <div className="flex-grow flex items-center justify-center w-full overflow-y-auto">
+      <div className="w-full flex-grow flex items-center justify-center flex-wrap  overflow-y-auto">
         {children}
       </div>
     </div>
