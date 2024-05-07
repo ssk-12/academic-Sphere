@@ -3,7 +3,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className=' '>//p-40
+    <div className=' '>
     <CreateClass></CreateClass>
     </div>
   )
