@@ -1,3 +1,4 @@
+"use client"
 import React, { useCallback } from 'react';
 import { markAttendance } from '../lib/actions/markAttendance';
 import DefButton from './DefButton';
