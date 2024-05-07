@@ -158,3 +158,17 @@ query Fetch_ev($class_id: uuid!) {
 }
 
 `
+
+
+export const FETCH_EVENT_DETAILS = gql`
+  query FetchEventDetails($event_id: uuid!) {
+    attendances(where: {event_id: {_eq: $event_id}}) {
+      status
+      timestamp
+      user_id
+      user {
+        name
+      }
+    }
+  }
+`;
