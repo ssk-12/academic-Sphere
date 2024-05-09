@@ -43,6 +43,8 @@ export const authOptions: NextAuthOptions = {
       authorize: async (credentials) => {
         if (!credentials) return null;
 
+        console.log(credentials.email, "user im")
+
         const { data } = await serverClient.query({
           query: FIND_USER_BY_EMAIL_QUERY,
           variables: { email: credentials.email },
@@ -58,7 +60,7 @@ export const authOptions: NextAuthOptions = {
           return await createUser(credentials.email, credentials.password, credentials.name);
         } else {
           if (await verifyPassword(user.password || '', credentials.password)) {
-            console.log(user.id,user.name,user.email);
+            console.log("verified");
             
             return { id: user.id, name: user.name, email: user.email };
           }
