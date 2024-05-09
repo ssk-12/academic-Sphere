@@ -11,7 +11,7 @@ const UsernameLayout = ({ children, params }: LayoutProps) => {
 
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-center md:m-2" style={{ height: '8%' }}>
-        <div className="fixed max-w-sm md:min-w-[600px] rounded-2xl  flex justify-center items-center  md:gap-4 bg-gray-800">
+        <div className="fixed top-16 max-w-sm md:min-w-[600px] rounded-2xl  flex justify-center items-center  md:gap-4 bg-gray-800">
 
           <SidebarItem
             baseHref="/c/"
