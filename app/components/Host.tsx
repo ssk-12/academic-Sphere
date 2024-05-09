@@ -14,7 +14,7 @@ function Host({ class_id, events }: any) {
     return (
         <div className='h-full w-full flex flex-col md:flex-row md:max-w-full'>
             <div className='h-1/4 md:h-full w-full md:w-1/4 flex flex-col md:justify-center md:items-center'>
-                <div className='md:h-[289px] md:w-[200px] flex md:flex-col rounded-2xl justify-center items-center bg-slate-900'>
+                <div className='md:h-[289px] md:w-[200px] flex md:flex-col rounded-2xl justify-center items-center bg-slate-900 mt-4 md:mt-0 mb-4 md:mb-0'>
                     <div className='p-2'>
                         <button onClick={() => setSelected("See events")}
                             className={getButtonClasses("See events")}>
@@ -29,7 +29,7 @@ function Host({ class_id, events }: any) {
                     </div>
                 </div>
             </div>
-            <div className='h-1/4 md:h-full w-full md:w-3/4 flex justify-center items-center'>
+            <div className='h-1/4 md:h-full w-full md:w-3/4 md:flex md:justify-center md:items-center'>
                 {selected === "Create event" && <CreateEvent classId={class_id} />}
                 {selected === "See events" && <Events class_id={class_id} events={events} user={false} />}
             </div>
