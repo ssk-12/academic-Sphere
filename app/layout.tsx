@@ -21,7 +21,7 @@ export default function RootLayout({
       <Providers>
         <body className={inter.className}>
           <div className="h-screen flex flex-col">
-            <div style={{ height: '10%' }}>
+            <div className="fixed top-0" style={{ height: '10%' }}>
               <AppbarClient/>
             </div>
             <div className="flex-grow overflow-y-auto">
