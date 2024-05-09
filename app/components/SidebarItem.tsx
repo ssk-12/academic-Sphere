@@ -23,7 +23,7 @@ export const SidebarItem = ({
 
     return (
         <div>
-            <div className={`flex ${selected ? "text-white" : "text-slate-500"} cursor-pointer p-2 pl-8`} onClick={() => {
+            <div className={`flex ${selected ? "text-white" : "text-slate-500"} cursor-pointer p-2`} onClick={() => {
                 router.push(fullHref);
             }}>
                 <div className="pr-2">

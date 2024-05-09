@@ -4,7 +4,7 @@ function Stream({ classDetails }: any) {
     // console.log(classDetails);
     
     return (    
-        <div className=' h-full'>
+        <div className=' max-w-sm md:min-w-[800px] h-full flex-wrap'>
             <div className='w-full  flex-wrap bg-[#d6dff1] h-52 rounded-2xl flex flex-col'>
                 <div className='p-3 flex items-end h-full gap-4'>
                     <div className='flex justify-between items-center w-full'>
@@ -14,7 +14,7 @@ function Stream({ classDetails }: any) {
 
                 </div>
             </div>
-            <div className='p-3 flex gap-4'>
+            <div className='p-3 flex flex-col md:flex-row gap-4'>
                 <div className='flex flex-col gap-2 rounded-2xl min-w-[420px]'>
                     <div className='font-semibold'>Class Code</div>
                     <h4 className='text-sm ' >{classDetails.id}</h4>
