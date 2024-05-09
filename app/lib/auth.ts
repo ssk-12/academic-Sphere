@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 const verifyPassword = async (userPassword: string, inputPassword: string): Promise<boolean> => {
   console.log("check user pass")
-  // console.log(inputPassword, userPassword)
+  console.log(inputPassword, userPassword)
   return bcrypt.compare(inputPassword, userPassword);
 };
 
@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        name: { label: "Name", type: "text", placeholder: "Not compulsory" },
+        name: { label: "Name", type: "text", placeholder: "Not compulsory for signin" },
         email: { label: "Email", type: "email", required: true },
         password: { label: "Password", type: "password", required: true }
       },
