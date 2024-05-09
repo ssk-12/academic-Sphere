@@ -34,7 +34,7 @@ export const Appbar = ({
     };
 
     return (
-        <div className="flex justify-between border-b px-4 py-1 bg-[#d6dff1] rounded-b-sm border-slate-300 max-h-[70px]">
+        <div className="flex justify-between border-b px-4 py-1 bg-[#d6dff1] rounded-b-sm border-slate-300 max-h-[70px] fixed top-0 w-full">
             <div className="text-lg flex justify-center items-center gap-2 font-bold">
                 <img className="w-8 h-8 rounded-full" src="https://www.svgrepo.com/show/528641/square-academic-cap-2.svg" alt="Logo" />
                 <div className="text-2xl font-semibold">Sphere</div>
